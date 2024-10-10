@@ -1,7 +1,13 @@
 
 
 const express = require('express')
+
+const cors = require('cors')
+
 const app = new express()
+
+
+app.use(cors())//mention this ppication is using cors
 
 // const upload = require('./upload'); // Import your multer configuration
 

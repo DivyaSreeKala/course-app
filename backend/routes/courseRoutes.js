@@ -3,11 +3,11 @@
 const express = require('express');
 const router = express.Router();
 
-const upload = require('../upload'); // Import your multer configuration
+// const upload = require('../upload'); // Import your multer configuration
 
 
 router.use(express.json())
-router.use(express.urlencoded({extended:true}))
+// router.use(express.urlencoded({extended:true}))
 
 const courseModal = require('../model/courseData')
 
@@ -25,6 +25,8 @@ router.get('/',async(req,res)=>{
     router.post('/add',async(req,res)=>{
     try{
         const data = req.body;
+        console.log(data)
+        console.log(req.body)
         const data1 = new courseModal();
         // const data1 = new courseModal({
         //     courseId: data.courseId,

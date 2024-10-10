@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const schema = mongoose.Schema({
     courseId:String,
     courseName:String,
-    Image:String,
+    image:String,
     // Image:{
     //     data: Buffer,
     //     contentType: String
