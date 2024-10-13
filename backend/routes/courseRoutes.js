@@ -27,7 +27,8 @@ router.get('/',async(req,res)=>{
         const data = req.body;
         console.log(data)
         console.log(req.body)
-        const data1 = new courseModal();
+        const data1 = new courseModal(data);
+        console.log(data1)
         // const data1 = new courseModal({
         //     courseId: data.courseId,
         //     courseName: data.courseName,
@@ -45,7 +46,7 @@ router.get('/',async(req,res)=>{
         // const imageUrl = `http://localhost:3000/courses/image/${savedData._id}`;
         
         // res.status(200).send({ message: 'Success', imageUrl });
-        res.status(200).send('success')
+        res.status(200).send(savedData)
     }catch(error){
         console.log(error)
         res.send(error)
