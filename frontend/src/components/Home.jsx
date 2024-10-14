@@ -9,25 +9,35 @@ import Typography from '@mui/material/Typography';
 const Home = () => {
   const [inputs,setInputs] = useState([])
   useEffect(() => {
-    axios.get('http://localhost:3000/courses/').then((res)=>{
+    axios.get('http://localhost:3002/courses/').then((res)=>{
       console.log(res.data)
       setInputs(res.data)
     }).catch((err) => {
       console.log(err)
     })
   },[])
+  const onDelete = (empId) => {
+    axios.delete('http://localhost:3002/courses/delete/'+empId).then((res)=>{
+      alert('deleted successfully')
+      window.location.reload()
+    }).catch((err)=>{
+      console.log(err)
+      alert('error in deletion')
+    })
+  }
+
   return (
-    <div>
-       <Card sx={{ maxWidth: 345 }}>
+    <div style={{width:"100%",height:"100%", backgroundColor:'none',borderRadius:"10px"}}>
+       <Card sx={{ width: '100%',display:"flex", justifyContent:'start'}}>
         {inputs.map((value,index)=>
-         <>
+         <div style={{margin:"10px",width:"400px",border:"1px solid gray",borderRadius:'10px'}}>
           <CardMedia
           component="img" // Ensure you specify this prop
         sx={{ height: 140 }}
         image={value.image}
         title="green iguana"
       />
-      {console.log(value.image)}
+      {console.log(value._id)}
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {value.courseName}
@@ -38,10 +48,10 @@ const Home = () => {
       </CardContent>
       <CardActions>
         <Button size="small" variant='contained' color='success'>Edit</Button>
-        <Button size="small" variant='contained' color='error'>Delete</Button>
+        <Button size="small" variant='contained' color='error' onClick={()=>onDelete(value._id)}  >Delete</Button>
       </CardActions>
           
-        </>  )}
+        </div>  )}
       
     </Card>
     </div>
