@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, TextField } from '@mui/material'
+import axios from 'axios'
 
 const Login = () => {
     const [user, setUser] = useState({
@@ -12,12 +13,20 @@ const Login = () => {
         setUser({...user,[e.target.name]:e.target.value})
 }
 let sendData=()=>{
-     if ((user.username=="admin" )&&(user.password=="123")) {
-        localStorage.setItem("username","admin"); //method to store value in variable
-        navigate('/home');
+    console.log(user)
+    axios.post('http://localhost:3002/users/login',user).then((res)=>{
+        console.log(res)
+        alert(res.data.userToken)
+        navigate('/home')
+    }).catch((err)=>{
+        console.log(err)
+    })
+    //  if ((user.username=="admin" )&&(user.password=="123")) {
+    //     localStorage.setItem("username","admin"); //method to store value in variable
+    //     navigate('/home');
 
-    }
-     else alert("Invalid credentials")
+    // }
+    //  else alert("Invalid credentials")
 
 }
   return (

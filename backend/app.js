@@ -17,6 +17,9 @@ app.use(morgan('dev'))
 const courseRoutes = require('./routes/courseRoutes')
 app.use('/courses',courseRoutes)
 
+
+const userRoutes = require('./routes/user');
+app.use('/users',userRoutes)
 // require('dotenv').config()
 require('dotenv').config();
 
