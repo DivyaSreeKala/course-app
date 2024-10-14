@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Navigate, useNavigate } from 'react-router-dom';
 const Home = () => {
   const [inputs,setInputs] = useState([])
   useEffect(() => {
@@ -24,6 +25,10 @@ const Home = () => {
       console.log(err)
       alert('error in deletion')
     })
+  }
+  const navigate = useNavigate();
+  const onUpdate = (course) => {
+        navigate('/add',{state:{course}})//to load component in path /add and pass aobject storing it in state in the location
   }
 
   return (
@@ -47,7 +52,7 @@ const Home = () => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" variant='contained' color='success'>Edit</Button>
+        <Button size="small" variant='contained' color='success' onClick={()=>onUpdate(value)}>Edit</Button>
         <Button size="small" variant='contained' color='error' onClick={()=>onDelete(value._id)}  >Delete</Button>
       </CardActions>
           

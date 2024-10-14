@@ -34,7 +34,7 @@ function App() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             News
           </Typography>
-          <Button color="inherit" onClick={()=>navigate('/')}>Home</Button>
+          <Button color="inherit" onClick={()=>navigate('/home')}>Home</Button>
           <Button color="inherit" onClick={()=>navigate('/add')}>Add</Button>
         </Toolbar>
       </AppBar>
