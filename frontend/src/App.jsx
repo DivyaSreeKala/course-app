@@ -13,6 +13,7 @@ import IconButton from '@mui/material/IconButton';
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import Home from './components/Home';
 import Add from './components/Add';
+import Login from './components/Login';
 function App() {
   const [count, setCount] = useState(0)
   const navigate = useNavigate()
@@ -40,7 +41,8 @@ function App() {
     </Box>
 
     <Routes>
-      <Route path="/" element={<Home />} />
+    <Route path="/" element={<Login/>} />
+      <Route path="/home" element={<Home />} />
       <Route path="/add" element={<Add />} />
     </Routes>
     </>
